@@ -20,6 +20,15 @@ related_skills: [delegation-guide, subagent-isolated-memory, writing-plans]
 - **СТРУКТУРА:** Ты должен выдать план, состоящий из 5-6 «Волн» работ.
 - **ШАБЛОН ЗАДАЧИ:** Загрузи `skill_view(name='orchestrator-architect', file_path='task.md')`. Затем спроси у пользователя: (1) название проекта, (2) путь сохранения (по умолчанию `Заметки/проекты_скиллов/{project_name}/`). Создай файл `task.md` по шаблону, заполни поля из запроса, сохрани по пути.
 
+**Алгоритм создания task.md:**
+1. Загрузи шаблон `skill_view(name='orchestrator-architect', file_path='task.md')`.
+2. Спроси пользователя:
+   - Название проекта (project_name).
+   - Путь сохранения — по умолчанию `/mnt/fileshare/Memory/Заметки/проекты_скиллов/{project_name}/task.md`.
+   - Заполни поля шаблона на основе запроса пользователя (What & Why, Constraints, Special Requirements, Infra Limits).
+3. Сохрани заполненный файл через `write_file` по выбранному пути.
+4. После сохранения — перейди к ШАГ 1 (Бриф PSC), используя заполненный task.md как входные данные.
+
 ---
 
 ## ПРОТОКОЛ ВЫПОЛНЕНИЯ
